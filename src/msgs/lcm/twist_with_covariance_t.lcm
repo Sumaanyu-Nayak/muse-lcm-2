@@ -1,0 +1,5 @@
+struct twist_with_covariance_t
+{
+    twist_t twist;
+    double covariance[36];
+}

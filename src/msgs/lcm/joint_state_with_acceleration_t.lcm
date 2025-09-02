@@ -1,0 +1,11 @@
+
+struct joint_state_with_acceleration_t
+{
+    header_t head;
+    int32_t no_of_joints;
+    string name[no_of_joints];
+    double position[no_of_joints];
+    double velocity[no_of_joints];
+    double acceleration[no_of_joints];
+    double effort[no_of_joints];
+}

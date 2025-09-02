@@ -1,0 +1,5 @@
+struct pose_with_covariance_t
+{
+    point_t position;
+    quaternion_t orientation;
+}

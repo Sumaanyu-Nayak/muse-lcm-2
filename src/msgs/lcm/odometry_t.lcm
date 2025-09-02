@@ -1,0 +1,7 @@
+struct odometry
+{
+    header_t head;
+    string child_frame_id;
+    pose_with_covariance_t pose;
+    twist_with_covariance_t twist;
+}

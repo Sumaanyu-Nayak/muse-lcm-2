@@ -1,0 +1,10 @@
+
+struct attitude_t
+{
+    header_t head;
+    double  quaternion[4];
+    double roll_deg;
+    double pitch_deg;
+    double yaw_deg;
+    double  angular_velocity[3];
+}

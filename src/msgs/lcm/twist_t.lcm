@@ -1,0 +1,5 @@
+struct twist_t
+{
+    vector_t linear;
+    vector_t angular;
+}

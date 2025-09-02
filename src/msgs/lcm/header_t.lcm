@@ -1,0 +1,7 @@
+struct header_t
+{
+    int32_t sequence_id;
+    double  sec;
+    double  nsec;
+    string   frame_name;
+}

@@ -1,0 +1,9 @@
+
+struct contact_detection_t
+{
+    header_t head;
+    boolean stance_lf;
+    boolean stance_rf;
+    boolean stance_lh;
+    boolean stance_rh;
+}

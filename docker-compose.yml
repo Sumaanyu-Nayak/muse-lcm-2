@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  muse-lcm:
+    build: .
+    image: muse-lcm:latest
+    container_name: muse-lcm-container
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/root/muse_lcm_ws
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    environment:
+      - DISPLAY=${DISPLAY}
+      - LCM_DEFAULT_URL=udp://239.255.76.67:7667?ttl=1
+    ports:
+      - "7667:7667/udp"  # LCM port
+    network_mode: host
+    command: /bin/bash

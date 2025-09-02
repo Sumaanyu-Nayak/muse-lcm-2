@@ -1,0 +1,12 @@
+
+
+struct leg_odometry_t
+{
+    header_t head;
+    double lin_vel_lf[3];
+    double lin_vel_rf[3];
+    double lin_vel_lh[3];
+    double lin_vel_rh[3];
+
+    double base_velocity[3];
+}

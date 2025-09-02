@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.10)
 project(attitude_estimator_lcm)
 
+# Add Pinocchio subdirectory
+add_subdirectory(pinocchio)
+
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -8,7 +11,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Find required packages
 find_package(PkgConfig REQUIRED)
 find_package(Eigen3 REQUIRED)
-find_package(pinocchio REQUIRED)
+
+find_package(pinocchio REQUIRED) # Do not use system pinocchio, use local build
 
 # Find LCM
 pkg_check_modules(LCM REQUIRED lcm)
@@ -17,7 +21,6 @@ pkg_check_modules(LCM REQUIRED lcm)
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/src
     ${CMAKE_CURRENT_SOURCE_DIR}/src/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/msgs
     ${EIGEN3_INCLUDE_DIR}
     ${LCM_INCLUDE_DIRS}
 )
@@ -31,7 +34,8 @@ link_directories(${LCM_LIBRARY_DIRS})
 # Collect source files for the estimator library
 file(GLOB_RECURSE ESTIMATOR_SOURCES
     "src/include/state_estimator/*.hpp"
-    "src/src/state_estimator.cpp"
+    "src/src/*.cpp"
+    "src/src/plugin/*.cpp"
 )
 
 # Collect LCM message sources
@@ -61,7 +65,7 @@ target_link_libraries(attitude_estimator_lcm
 target_link_libraries(leg_odometry_estimator_lcm 
     ${LCM_LIBRARIES}
     Eigen3::Eigen
-    pinocchio::pinocchio
+    pinocchio
     m
 )
 

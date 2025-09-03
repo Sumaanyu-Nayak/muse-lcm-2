@@ -26,3 +26,12 @@ else
     echo "=== Docker build failed ==="
     exit 1
 fi
+
+
+
+    docker run -it --rm \
+        --name muse-lcm-2-container \
+        -v "$(pwd)":/root/muse_lcm_ws \
+        -p 7667:7667/udp \
+        --network host \
+        muse-lcm-2

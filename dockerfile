@@ -1,5 +1,5 @@
 # Use Ubuntu 22.04 as base image
-FROM ubuntu:22.04
+FROM ros:humble
 
 # Set environment variables to avoid interactive prompts
 ENV DEBIAN_FRONTEND=noninteractive
@@ -36,6 +36,7 @@ RUN apt-get update && apt-get install -y \
     net-tools \
     liblcm-dev \
     liblcm-java \
+    ros-humble-pinocchio \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
 
